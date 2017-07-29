@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    Welcome Page
+    <router-view></router-view>
 @endsection
