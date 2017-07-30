@@ -15,7 +15,15 @@ Vue.use(VueRouter);
 
 var App = Vue.extend({});
 
-var route = new VueRouter();
+var route = new VueRouter({
+    hashbang: false,
+    //abstract: true,
+    history: true,
+    mode: 'html5',
+    linkActiveClass: 'active',
+    transitionOnLoad: true,
+    root: '/home'
+});
 
 
 route.map({

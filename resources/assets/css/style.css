@@ -13,11 +13,9 @@
     vertical-align: top;
 }
 .mail-box .sm-side {
-    /* background: none repeat scroll 0 0 #ffffff; */
-    border-right: 1px solid #2c3e50;
+     background: none repeat scroll 0 0 #fcfcfc;
     border-radius: 4px 0 0 4px;
     width: 25%;
-    /* padding: 0px; */
 }
 .mail-box .lg-side {
     background: none repeat scroll 0 0 #fff;
@@ -25,7 +23,7 @@
     width: 75%;
 }
 .mail-box .sm-side .user-head {
-    background: none repeat scroll 0 0 #2c3e50;
+    background: none repeat scroll 0 0 #0b85ff;
     border-radius: 4px 0 0;
     color: #fff;
     min-height: 80px;
@@ -133,7 +131,7 @@ ul.labels-info li a i {
     padding: 0 22px;
 }
 .inbox-head {
-    background: none repeat scroll 0 0 #34495e;
+    background: none repeat scroll 0 0 #2f97ff;
     border-radius: 0 4px 0 0;
     color: #fff;
     min-height: 80px;
@@ -236,7 +234,7 @@ ul.inbox-pagination li {
     box-shadow: none;
 }
 .btn-send, .btn-send:hover {
-    background: none repeat scroll 0 0 #2c3e50;
+    background: none repeat scroll 0 0 #0b85ff;
     color: #fff;
 }
 .btn-send:hover {
