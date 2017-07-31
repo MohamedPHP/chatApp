@@ -17,12 +17,17 @@ elixir(function(mix) {
     mix.styles([
         'fontawesome.css',
         'bootstrap.css',
+        'sweetalert.css',
+        'alertify.core.css',
+        'alertify.default.css',
         'style.css',
     ], 'public/css/style.css');
 
     mix.scripts([
         'lips/jquery.min.js',
         'lips/bootstrap.min.js',
+        'lips/sweetalert.min.js',
+        'lips/alertify.min.js',
     ], 'public/js/main.js');
 
     mix.browserify([

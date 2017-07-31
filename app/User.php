@@ -29,5 +29,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Message', 'user_id');
     }
+    public function rooms()
+    {
+        return $this->hasMany('App\Room', 'user_id');
+    }
 
 }

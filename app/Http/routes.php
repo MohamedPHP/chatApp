@@ -18,3 +18,10 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home/{vue?}', 'HomeController@index')->where('vue', '[\/\w\.-]*');
+Route::post('/AddRoom', 'RoomsController@AddRoom');
+Route::get('/MyRooms', 'RoomsController@MyRooms');
+Route::get('/AllRooms', 'RoomsController@AllRooms');
+Route::get('/DeleteRoom/{id}', 'RoomsController@DeleteRoom');
+Route::get('/getRoomMessages/{id}', 'RoomsController@getRoomMessages');
+
+Route::post('/AddMessage', 'MessagesController@AddMessage');

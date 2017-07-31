@@ -10,4 +10,8 @@ class Room extends Model
     {
         return $this->hasMany('App\Message', 'room_id');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'user_id');
+    }
 }

@@ -1,63 +1,58 @@
 <template lang="html">
-    <div class="chat_window">
-        <div class="top_menu">
-            <div class="buttons">
-                <div class="button close">
-                </div>
-                <div class="button minimize">
-                </div>
-
-
-                <div class="button maximize">
+    <div v-if="isLoading">
+        <h4>Room name is {{ room_name }}</h4>
+        <br>
+        <div class="chat_window">
+            <div class="top_menu">
+                <div class="title">
+                    Chat of room {{ room_name }}
                 </div>
             </div>
-
-
-            <div class="title">
-                Chat
-            </div>
+            <all_messages :messages="room.messages" :onlineuser="onlineUser"></all_messages>
+            <add_message :room="room"></add_message>
         </div>
-        <ul class="messages">
-
-        </ul>
-        <div class="bottom_wrapper clearfix">
-            <div class="message_input_wrapper">
-                <input class="message_input" placeholder="Type your message here...">
-            </div>
-            <div class="send_message">
-                <div class="icon">
-                </div>
-
-
-                <div class="text">
-                    Send
-                </div>
-            </div>
-        </div>
+        <br />
     </div>
-    <div class="message_template">
-        <ul>
-            <li class="message">
-                <div class="avatar">
-                </div>
-
-
-                <div class="text_wrapper">
-                    <div class="text">
-                    </div>
-                </div>
-            </li>
-        </ul>
-    </div>
-    <br />
+    <spinner v-ref:spinner size="xl" fixed text="Loading..."></spinner>
 </template>
 
 <script>
 export default {
     data: function () {
         return {
-
+            room_name: '',
+            room: {},
+            isLoading: false,
+            onlineUser: {},
         }
     },
+    components: {
+        all_messages: require('./all_messages.vue'),
+        add_message: require('./add_message.vue'),
+        spinner: require('vue-strap/dist/vue-strap.min').spinner,
+    },
+    ready: function () {
+        this.$refs.spinner.show();
+        this.getAlMessages();
+    },
+    methods: {
+        getAlMessages: function () {
+            this.room_name = this.$route.params.room_name;
+            this.$http.get('/getRoomMessages/'+this.$route.params.room_id).then(function (response) {
+                this.room = response.body.room;
+                this.onlineUser = response.body.onlineUser;
+                this.isLoading = true;
+                this.$refs.spinner.hide();
+            }, function (response) {
+                alert('error 1002 messages');
+                // window.location = '/home';
+            });
+        }
+    },
+    events: {
+        MessageAdded: function (val) {
+            this.$broadcast('MessageAdded2', val);
+        }
+    }
 }
 </script>

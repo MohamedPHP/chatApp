@@ -13,21 +13,22 @@ var VueRouter = require('vue-router');
 
 Vue.use(VueRouter);
 
+var moment = require('moment');
+
+moment.locale('eg'); // 'en'.
+
+Vue.use(require('vue-moment'), {
+    moment
+});
+
 var App = Vue.extend({});
 
-var route = new VueRouter({
-    hashbang: false,
-    //abstract: true,
-    history: true,
-    mode: 'html5',
-    linkActiveClass: 'active',
-    transitionOnLoad: true,
-    root: '/home'
-});
+var route = new VueRouter();
 
 
 route.map({
-    '/chatbox': {
+    '/chatbox/:room_id/:room_name': {
+        name: 'Chatbox',
         component: require('./components/chatbox/Chatbox.vue'),
     },
     '/AddRooms': {
