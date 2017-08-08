@@ -34,4 +34,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Room', 'user_id');
     }
 
+    public function online()
+    {
+        return $this->hasOne('App\User', 'user_id');
+    }
+
 }

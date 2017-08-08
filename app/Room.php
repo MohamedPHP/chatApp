@@ -14,4 +14,9 @@ class Room extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+    public function online()
+    {
+        return $this->hasMany('App\Online', 'room_id');
+    }
 }

@@ -25,7 +25,8 @@ export default {
             formdata.append('body', this.body);
             formdata.append('room_id', this.room.id);
             this.$http.post('/AddMessage', formdata).then(function (response) {
-                this.$dispatch('MessageAdded', response.body.message);
+                // was for adding the message into the message box but معلش بئا الدونيا غداره هههههههههههههه
+                // this.$dispatch('MessageAdded', response.body.message);
                 this.body = '';
             }, function (response) {
                 console.log("error");

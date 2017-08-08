@@ -53,6 +53,7 @@ class ComposerStaticInit3e26abeb3c1669dbd01060eeb3ce47aa
         ),
         'P' => 
         array (
+            'Pusher\\' => 7,
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
             'PhpParser\\' => 10,
@@ -174,6 +175,10 @@ class ComposerStaticInit3e26abeb3c1669dbd01060eeb3ce47aa
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/SuperClosure/src',
         ),
+        'Pusher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/pusher/pusher-php-server/src',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src/Psy',
@@ -262,6 +267,7 @@ class ComposerStaticInit3e26abeb3c1669dbd01060eeb3ce47aa
 
     public static $classMap = array (
         'CreateMessagesTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_29_002342_create_messages_table.php',
+        'CreateOnlinesTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_01_034807_create_onlines_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateRoomsTable' => __DIR__ . '/../..' . '/database/migrations/2017_07_29_002331_create_rooms_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',

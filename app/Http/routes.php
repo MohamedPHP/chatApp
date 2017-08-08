@@ -12,16 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect('/home');
+    }else {
+        return view('welcome');
+    }
 });
 
 Route::auth();
-
-Route::get('/home/{vue?}', 'HomeController@index')->where('vue', '[\/\w\.-]*');
-Route::post('/AddRoom', 'RoomsController@AddRoom');
-Route::get('/MyRooms', 'RoomsController@MyRooms');
-Route::get('/AllRooms', 'RoomsController@AllRooms');
-Route::get('/DeleteRoom/{id}', 'RoomsController@DeleteRoom');
-Route::get('/getRoomMessages/{id}', 'RoomsController@getRoomMessages');
-
-Route::post('/AddMessage', 'MessagesController@AddMessage');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home/{vue?}', 'HomeController@index')->where('vue', '[\/\w\.-]*');
+    Route::post('/AddRoom', 'RoomsController@AddRoom');
+    Route::get('/MyRooms', 'RoomsController@MyRooms');
+    Route::get('/AllRooms', 'RoomsController@AllRooms');
+    Route::get('/DeleteRoom/{id}', 'RoomsController@DeleteRoom');
+    Route::get('/getRoomMessages/{id}', 'RoomsController@getRoomMessages');
+    Route::get('/getOnlineUsers/{id}', 'RoomsController@getOnlineUsers');
+    Route::post('/AddMessage', 'MessagesController@AddMessage');
+    Route::post('/AddAvatar', 'HomeController@AddAvatar');
+    Route::get('/RemoveLeavingUser/{id}', 'RoomsController@RemoveLeavingUser');
+});

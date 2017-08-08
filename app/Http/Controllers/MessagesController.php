@@ -14,6 +14,7 @@ use Auth;
 
 class MessagesController extends Controller
 {
+
     public function AddMessage(Request $request) {
         $this->validate($request, [
             'body' => 'required',
@@ -27,8 +28,10 @@ class MessagesController extends Controller
         $message->body = $request->body;
         $message->save();
         if ($message) {
+            $messageData = Message::where('id', $message->id)->with('user')->first();
+            $this->trigger_pusher($messageData->room_id . 'room', 'newMessage', $messageData);
             return [
-                'message' => $message,
+                'message' => $messageData,
                 'status' => 'done',
             ];
         }

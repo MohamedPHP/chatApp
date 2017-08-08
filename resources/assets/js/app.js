@@ -9,6 +9,10 @@ Vue.use(VueResource);
 
 Vue.http.headers.common['X-CSRF-TOKEN'] = $('#_token').attr('value');
 
+Vue.use(require('vue-pusher'), {
+    api_key: 'f6561677a56f57cba371',
+});
+
 var VueRouter = require('vue-router');
 
 Vue.use(VueRouter);
@@ -39,6 +43,9 @@ route.map({
     },
     '/AllRooms': {
         component: require('./components/rooms/AllRooms.vue'),
+    },
+    '/Profile': {
+        component: require('./components/user/Profile.vue'),
     },
 });
 
